@@ -1,0 +1,49 @@
+#include <iostream>
+
+using namespace std;
+void main()
+{
+	struct proc {
+		int p;
+		bool d = false;
+	};
+	struct b {
+		int s;
+		string a ;
+	};
+	b blocks[5] = { {100,"one"},{500,"two"},{200,"three"},{300,"four"},{600,"five"} };
+	proc* arr;
+	int n;
+	cout << "enter number of proceses" << endl;
+	cin >> n;
+	arr = new proc[n];
+	for (int i = 0; i < n; i++)
+	{
+		cout << "enter the " << i + 1 << " process" << endl;
+		cin >> arr[i].p;
+	}
+	for (int x = 0; x < n; x++)
+	{
+		for (int i = 0; i < 5; i++)
+		{
+
+
+			if (arr[x].p <= blocks[i].s && arr[x].d == false )
+			{
+
+				arr[x].d = true;
+				blocks[i].s = blocks[i].s - arr[x].p;
+				cout << arr[x].p << "   " << blocks[i].a << endl;
+				cout << endl;
+				break;
+			}
+
+
+		}
+		
+			if (arr[x].d == false) {
+				cout << arr[x].p << "   not allocated " << endl;
+			}
+	}
+}
+	
